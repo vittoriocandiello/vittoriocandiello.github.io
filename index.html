@@ -97,12 +97,70 @@
             margin-bottom: 20px;
         }
 
-        /* About */
-        .about p {
-            font-size: 0.95rem;
-            color: var(--accent);
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 28px;
             max-width: 600px;
-            line-height: 1.7;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 6px;
+            bottom: 6px;
+            width: 1.5px;
+            background: var(--border);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 7px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+        }
+
+        .timeline-item.current::before {
+            background: var(--text);
+            box-shadow: 0 0 0 3px rgba(224, 224, 224, 0.15);
+        }
+
+        .timeline-role {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .timeline-where {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 1px;
+        }
+
+        .timeline-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-date {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
         }
 
         /* Research */
@@ -261,6 +319,39 @@
             max-width: 640px;
         }
 
+        /* ABB */
+        .abb-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .abb-layout .figure img {
+            border-radius: 6px;
+        }
+
+        .annotated-img {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .annotated-img img {
+            width: 100%;
+            display: block;
+            border-radius: 6px;
+        }
+
+        .img-label {
+            position: absolute;
+            font-size: 0.55rem;
+            font-weight: 500;
+            color: #111;
+            line-height: 1;
+            pointer-events: none;
+        }
+
         /* Footer */
         footer {
             max-width: var(--max-width);
@@ -309,6 +400,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .abb-layout {
+                grid-template-columns: 1fr;
+            }
+
             footer {
                 flex-direction: column;
                 gap: 16px;
@@ -325,22 +420,58 @@
         <p class="title">Computational Scientist</p>
         <nav>
             <a href="https://github.com/vittoriocandiello">GitHub</a>
-            <a href="https://linkedin.com/">LinkedIn</a>
+            <a href="https://linkedin.com/in/vittoriocandiello">LinkedIn</a>
             <a href="https://arxiv.org/abs/2603.06497">arXiv</a>
         </nav>
     </header>
 
     <section class="about">
-        <h2>About</h2>
-        <p>MSc in Mathematical Engineering (Computational Science), Politecnico di Milano. 110/110 cum laude. Thesis at ETH Zurich, Soft Robotics Lab. Currently intern at Dassault Systemes.</p>
+        <h2>Journey</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <p class="timeline-role">BSc Aerospace Engineering</p>
+                    <span class="timeline-date">September 2020 &ndash; September 2023</span>
+                </div>
+                <p class="timeline-where">Università di Padova &middot; 110/110 cum laude &middot; GPA 28.9/30</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <p class="timeline-role">MSc Mathematical Engineering</p>
+                    <span class="timeline-date">September 2023 &ndash; March 2026</span>
+                </div>
+                <p class="timeline-where">Politecnico di Milano &middot; 110/110 cum laude &middot; GPA 29.6/30</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <p class="timeline-role">R&amp;D Internship</p>
+                    <span class="timeline-date">February 2025 &ndash; August 2025</span>
+                </div>
+                <p class="timeline-where">ABB Research Center, Baden, Switzerland &middot; Numerical simulation of circuit breakers</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-header">
+                    <p class="timeline-role">Master's Thesis</p>
+                    <span class="timeline-date">September 2025 &ndash; March 2026</span>
+                </div>
+                <p class="timeline-where">ETH Zurich, Soft Robotics Lab, Switzerland &middot; Design optimization for soft robots</p>
+            </div>
+            <div class="timeline-item current">
+                <div class="timeline-header">
+                    <p class="timeline-role">R&amp;D Internship</p>
+                    <span class="timeline-date">March 2026 &ndash; Present</span>
+                </div>
+                <p class="timeline-where">Dassault Systèmes, Stuttgart, Germany &middot; ML-driven boundary conditions for LBM fluid simulation</p>
+            </div>
+        </div>
     </section>
 
     <section class="research">
-        <h2>Master's Thesis &mdash; ETH Zurich, Soft Robotics Lab</h2>
+        <h2>Master's Thesis &mdash; ETH Zurich, Soft Robotics Lab, Switzerland</h2>
 
         <div class="paper-meta">
             <p class="paper-title">A Unified Low-Dimensional Design Embedding for Joint Optimization of Shape, Material, and Actuation in Soft Robots</p>
-            <p class="paper-authors">Vittorio Candiello*, Manuel Mekkattu*, Mike Y. Michelis, Robert K. Katzschmann &mdash; * equal contribution</p>
             <p class="paper-venue">Submitted to IROS (under review)</p>
             <a class="paper-link" href="https://arxiv.org/abs/2603.06497">Read on arXiv</a>
         </div>
@@ -360,16 +491,9 @@
             </div>
         </div>
 
-        <p class="experiment-section-title">Swimmer experiments</p>
+        <p class="experiment-section-title">Swimmer Optimization</p>
 
         <div class="experiment-row">
-            <div class="experiment-pair">
-                <p class="experiment-label">Basis functions vs neural field</p>
-                <video playsinline muted loop controls>
-                    <source src="assets/swimmersbfnn.mp4" type="video/mp4">
-                </video>
-                <img src="assets/loss_swimbfnn.svg" alt="Loss plot: swimmer basis functions vs neural field">
-            </div>
             <div class="experiment-pair">
                 <p class="experiment-label">Joint vs sequential optimization</p>
                 <video playsinline muted loop controls>
@@ -377,9 +501,16 @@
                 </video>
                 <img src="assets/loss_swimcoseq.svg" alt="Loss plot: swimmer co-optimization vs sequential">
             </div>
+            <div class="experiment-pair">
+                <p class="experiment-label">Basis functions vs neural field</p>
+                <video playsinline muted loop controls>
+                    <source src="assets/swimmersbfnn.mp4" type="video/mp4">
+                </video>
+                <img src="assets/loss_swimbfnn.svg" alt="Loss plot: swimmer basis functions vs neural field">
+            </div>
         </div>
 
-        <p class="experiment-section-title">Jumper experiments</p>
+        <p class="experiment-section-title">Jumper-Flipper Optimization</p>
 
         <div class="experiment-row">
             <div class="experiment-pair">
@@ -400,12 +531,13 @@
     </section>
 
     <section class="project">
-        <h2>Internship &mdash; Dassault Systemes</h2>
+        <h2>R&amp;D Internship &mdash; Dassault Systèmes, Stuttgart, Germany</h2>
 
-        <p class="paper-title" style="margin-bottom: 16px;">Lattice Boltzmann Solver</p>
-        <p class="project-description">Minimal LBM solver in C, built while working at Dassault Systemes on acoustic liner boundary conditions for jet engine applications.</p>
-        <p class="project-note">The public repository implements a D2Q9 solver with solid wall boundary conditions. No dependencies; outputs can be visualized with ParaView. The full version with time-domain impedance boundary conditions for acoustic liners is not public.</p>
-        <a class="project-link" href="https://github.com/vittoriocandiello/lbmD2Q9">View on GitHub</a>
+        <p class="paper-title" style="margin-bottom: 16px;">Time Domain Impedance BC for Lattice Boltzmann Solver</p>
+        <p class="project-description">Internship at Dassault Systèmes: implementing a machine learning model for time-domain impedance boundary conditions (TDIBC) for acoustic liners within a lattice Boltzmann simulation framework, with applications in jet engines.</p>
+    <p class="project-note">The public repository linked below is a minimal single-file C solver with no dependencies, built as an initial test. It implements a D2Q9 LBM with reflective solid wall boundary conditions and outputs compatible with ParaView.</p>
+            <a class="project-link" href="https://github.com/vittoriocandiello/lbmD2Q9">View on GitHub</a>
+    <p class="project-note">The video below shows a 2D LBM simulation with TDIBC for an acoustic liner, unlike the public repository, which uses purely reflective walls.</p>
 
         <div class="project-video">
             <video playsinline muted loop controls>
@@ -415,12 +547,33 @@
         </div>
     </section>
 
+    <section class="project">
+        <h2>R&amp;D Internship &mdash; ABB Research Center, Baden, Switzerland</h2>
+
+        <div class="abb-layout">
+            <div>
+                <p class="paper-title" style="margin-bottom: 16px;">Circuit Breaker Simulation</p>
+                <p class="project-description">Simulation tools for circuit breaker design, involving coupled electromagnetics, radiation transport, and fluid dynamics.</p>
+                <p class="project-note">Contributed to a radiation transport model and reviewed the electromagnetic solver code.</p>
+            </div>
+            <div class="figure" style="margin-bottom: 0;">
+                <div class="annotated-img">
+                    <img src="assets/circbreak.png" alt="Circuit breaker transient simulation">
+                    <span class="img-label" style="top: 3%; left: 3%; font-size: 0.5rem;">Temperature [K]</span>
+                    <span class="img-label" style="top: 7%; left: 5%;">20,000</span>
+                    <span class="img-label" style="top: 24%; left: 5.0%;">300</span>
+                </div>
+                <p class="figure-label">Circuit breaker transient simulation</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <span>Vittorio Candiello</span>
         <nav>
             <a href="mailto:vittorio.candiello@gmail.com">Email</a>
             <a href="https://github.com/vittoriocandiello">GitHub</a>
-            <a href="https://linkedin.com/">LinkedIn</a>
+            <a href="https://linkedin.com/in/vittoriocandiello">LinkedIn</a>
         </nav>
     </footer>
 
