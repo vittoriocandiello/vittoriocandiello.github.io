@@ -216,7 +216,7 @@
         }
 
         .overview-figure {
-            max-width: 560px;
+            max-width: 860px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -234,7 +234,7 @@
             align-items: center;
             gap: 20px;
             margin-bottom: 56px;
-            max-width: 600px;
+            max-width: 720px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -280,6 +280,12 @@
             border-radius: 4px;
         }
 
+        .experiment-pair img.loss-plot {
+            width: 72%;
+            margin: 0 auto;
+            border-radius: 0;
+        }
+
         .experiment-label {
             font-size: 0.8rem;
             color: var(--text-secondary);
@@ -322,6 +328,15 @@
 
         .project-video .figure-label {
             max-width: 640px;
+        }
+
+        .project-video.wide video {
+            max-width: 100%;
+        }
+
+        .project-video.wide .figure-label {
+            max-width: 720px;
+            line-height: 1.6;
         }
 
         /* ABB */
@@ -422,7 +437,7 @@
 
     <header>
         <h1>Vittorio Candiello</h1>
-        <p class="title">Computational Scientist</p>
+        <p class="title">PhD Student &middot; ETH Zurich</p>
         <nav>
             <a href="https://github.com/vittoriocandiello">GitHub</a>
             <a href="https://linkedin.com/in/vittoriocandiello">LinkedIn</a>
@@ -462,12 +477,19 @@
                 </div>
                 <p class="timeline-where">ETH Zurich, Soft Robotics Lab, Switzerland &middot; Design optimization for soft robots</p>
             </div>
-            <div class="timeline-item current">
+            <div class="timeline-item">
                 <div class="timeline-header">
                     <p class="timeline-role">R&amp;D Internship</p>
-                    <span class="timeline-date">March 2026 &ndash; Present</span>
+                    <span class="timeline-date">March 2026 &ndash; September 2026</span>
                 </div>
-                <p class="timeline-where">Dassault Systèmes, Stuttgart, Germany &middot; ML-driven boundary conditions for LBM fluid simulation</p>
+                <p class="timeline-where">Dassault Systèmes, Stuttgart, Germany &middot; Time-domain impedance boundary conditions for lattice Boltzmann acoustics</p>
+            </div>
+            <div class="timeline-item current">
+                <div class="timeline-header">
+                    <p class="timeline-role">PhD</p>
+                    <span class="timeline-date">November 2026 &ndash; Present</span>
+                </div>
+                <p class="timeline-where">ETH Zurich, Soft Robotics Lab, Switzerland &middot; Simulation for robot learning and optimization</p>
             </div>
         </div>
     </section>
@@ -477,7 +499,7 @@
 
         <div class="paper-meta">
             <p class="paper-title">A Unified Low-Dimensional Design Embedding for Joint Optimization of Shape, Material, and Actuation in Soft Robots</p>
-            <p class="paper-venue">Submitted under review</p>
+            <p class="paper-venue">Accepted at IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 2026</p>
             <a class="paper-link" href="https://arxiv.org/abs/2603.06497">Read on arXiv</a>
         </div>
 
@@ -501,17 +523,17 @@
         <div class="experiment-row">
             <div class="experiment-pair">
                 <p class="experiment-label">Joint vs sequential optimization</p>
-                <video playsinline muted loop controls>
+                <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
                     <source src="assets/swimmerscoseq.mp4" type="video/mp4">
                 </video>
-                <img src="assets/loss_swimcoseq.svg" alt="Loss plot: swimmer co-optimization vs sequential">
+                <img class="loss-plot" src="assets/loss_swimcoseq.svg" alt="Loss plot: swimmer co-optimization vs sequential">
             </div>
             <div class="experiment-pair">
                 <p class="experiment-label">Basis functions vs neural field</p>
-                <video playsinline muted loop controls>
+                <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
                     <source src="assets/swimmersbfnn.mp4" type="video/mp4">
                 </video>
-                <img src="assets/loss_swimbfnn.svg" alt="Loss plot: swimmer basis functions vs neural field">
+                <img class="loss-plot" src="assets/loss_swimbfnn.svg" alt="Loss plot: swimmer basis functions vs neural field">
             </div>
         </div>
 
@@ -520,17 +542,17 @@
         <div class="experiment-row">
             <div class="experiment-pair">
                 <p class="experiment-label">Joint vs sequential optimization</p>
-                <video playsinline muted loop controls>
+                <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
                     <source src="assets/jumperscoseq.mp4" type="video/mp4">
                 </video>
-                <img src="assets/loss_jumpcoseq.svg" alt="Loss plot: jumper co-optimization vs sequential">
+                <img class="loss-plot" src="assets/loss_jumpcoseq.svg" alt="Loss plot: jumper co-optimization vs sequential">
             </div>
             <div class="experiment-pair">
                 <p class="experiment-label">Basis functions vs per-voxel</p>
-                <video playsinline muted loop controls>
+                <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
                     <source src="assets/jumpersbfpv.mp4" type="video/mp4">
                 </video>
-                <img src="assets/loss_jumpbfpv.svg" alt="Loss plot: jumper basis functions vs per-voxel">
+                <img class="loss-plot" src="assets/loss_jumpbfpv.svg" alt="Loss plot: jumper basis functions vs per-voxel">
             </div>
         </div>
     </section>
@@ -538,17 +560,22 @@
     <section class="project">
         <h2>R&amp;D Internship &mdash; Dassault Systèmes, Stuttgart, Germany</h2>
 
-        <p class="paper-title" style="margin-bottom: 16px;">Time Domain Impedance BC for Lattice Boltzmann Solver</p>
-        <p class="project-description">Internship at Dassault Systèmes: implementing a machine learning model for time-domain impedance boundary conditions (TDIBC) for acoustic liners within a lattice Boltzmann simulation framework, with applications in jet engines.</p>
-    <p class="project-note">The public repository linked below is a minimal single-file C solver with no dependencies, built as an initial test. It implements a D2Q9 LBM with reflective solid wall boundary conditions and outputs compatible with ParaView.</p>
-            <a class="project-link" href="https://github.com/vittoriocandiello/lbmD2Q9">View on GitHub</a>
-    <p class="project-note">The video below shows a 2D LBM simulation with TDIBC for an acoustic liner, unlike the public repository, which uses purely reflective walls.</p>
+        <p class="paper-title" style="margin-bottom: 16px;">Time-Domain Impedance Boundary Conditions for Lattice Boltzmann Acoustics</p>
+        <p class="project-description">Acoustic liners line the ducts of aircraft engines to absorb sound. They are characterised by a frequency-dependent impedance, while a lattice Boltzmann solver advances in time. The work consisted in turning this impedance into a wall boundary condition that the solver can apply efficiently at every time step, without resolving the liner geometry.</p>
+        <p class="project-note">Work in preparation for publication. A minimal single-file D2Q9 solver, written as an initial test, is public on <a href="https://github.com/vittoriocandiello/lbmD2Q9">GitHub</a>.</p>
 
-        <div class="project-video">
-            <video playsinline muted loop controls>
-                <source src="assets/acousticwave.mp4" type="video/mp4">
+        <div class="project-video wide">
+            <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
+                <source src="assets/tdibc_kundt.mp4" type="video/mp4">
             </video>
-            <p class="figure-label">Acoustic wave simulation (Blender render, full solver with acoustic liner BCs)</p>
+            <p class="figure-label">Normal-incidence tube. A wave packet reflects off the impedance wall on the right, for three liner models. The plots compare the reflection coefficient measured in the simulation with the target. Fitting the raw, band-limited data amplifies waves just above the band; completing the data outside the band first removes this.</p>
+        </div>
+
+        <div class="project-video wide">
+            <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
+                <source src="assets/tdibc_grazing.mp4" type="video/mp4">
+            </video>
+            <p class="figure-label">Lined duct with grazing flow. A tone propagates over the CT73 liner (dashed section of the bottom wall) for three flow and frequency conditions. The plots compare the sound pressure level along the top wall with a finite-element solution of the same problem.</p>
         </div>
     </section>
 
